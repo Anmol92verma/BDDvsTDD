@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test-junit"))
+    testImplementation("io.mockk:mockk:1.11.0")
 
     testImplementation("io.cucumber:cucumber-java:6.10.4")
     testImplementation("io.cucumber:cucumber-junit:6.10.4")
@@ -34,7 +35,7 @@ task("cucumber"){
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.getByName("cucumberRuntime") + sourceSets.main.get().output + sourceSets.test.get().output
-            args = listOf("--plugin", "pretty", "--glue", "features", "src/test/resources/features")
+            args = listOf("--plugin", "pretty", "--glue", "cucumber.features", "src/test/resources/features")
         }
     }
 }
